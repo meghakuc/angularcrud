@@ -1,0 +1,38 @@
+<h3 align="center">Update Student</h3>
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Student Name</label>
+        <input type="text" class="form-control" formControlName="student_name" #student_name [(ngModel)] = "student.student_name" />
+      </div>
+	  <div *ngIf="angForm.controls['student_name'].invalid && (angForm.controls['student_name'].dirty || angForm.controls['student_name'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['student_name'].errors.required">
+        Student Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Department Name </label>
+        <input type="text" class="form-control" formControlName="department_name" #department_name [(ngModel)] = "student.department_name" />
+      </div>
+	  <div *ngIf="angForm.controls['department_name'].invalid && (angForm.controls['department_name'].dirty || angForm.controls['department_name'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['department_name'].errors.required">
+        Department Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Roll Number </label>
+        <input type="text" class="form-control" formControlName="roll_number" #roll_number [(ngModel)] = "student.roll_number" />
+      </div>
+	  <div *ngIf="angForm.controls['roll_number'].invalid && (angForm.controls['roll_number'].dirty || angForm.controls['roll_number'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['roll_number'].errors.required">
+        Roll Number is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click)="updateStudent(student_name.value, department_name.value, roll_number.value)"
+        class="btn btn-primary" [disabled]="angForm.pristine || angForm.invalid">Update Student</button>
+      </div>
+    </form>
+  </div>
+</div>
